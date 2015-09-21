@@ -12,21 +12,27 @@
  */
 package net.stickycode.mockwire.mockito;
 
+import java.lang.reflect.Field;
+import java.util.Objects;
+
 import org.mockito.Mockito;
 
-import net.stickycode.mockwire.Mocker;
+import net.stickycode.bootstrap.StickyBootstrap;
+import net.stickycode.mockwire.MockwireMockerBridge;
 
+public class MockitoMockwireMockerBridge
+    implements MockwireMockerBridge {
 
-public class MockitoMocker implements Mocker {
+  private StickyBootstrap bootstrap;
 
   @Override
-  public <T> T mock(Class<T> type) {
-    return Mockito.mock(type);
+  public void initialise(StickyBootstrap bootstrap, Class<?> metadata) {
+    this.bootstrap = Objects.requireNonNull(bootstrap);
   }
 
   @Override
-  public <T> T mock(String mockName, Class<T> type) {
-    return Mockito.mock(type, mockName);
+  public void process(String name, Object target, Field field, Class<?> type) {
+    bootstrap.registerSingleton(name, Mockito.mock(type, name), type);
   }
 
 }
