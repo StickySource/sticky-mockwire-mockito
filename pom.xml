@@ -10,7 +10,7 @@
 
   <groupId>net.stickycode.mockwire</groupId>
   <artifactId>sticky-mockwire-mockito</artifactId>
-  <version>8.1</version>
+  <version>8.2-SNAPSHOT</version>
 
   <name>sticky-mockwire-mockito</name>
   <description>Mockito mocker implementation for Mockwire, used to provide mocks of services not under test in an isolated context</description>
@@ -21,7 +21,7 @@
   <scm>
     <connection>${git.url}</connection>
     <developerConnection>${git.url}</developerConnection>
-    <tag>sticky-mockwire-mockito-8.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
